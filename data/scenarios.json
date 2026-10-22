@@ -1,0 +1,339 @@
+[
+  {
+    "id": "normal",
+    "title": "Ordinary supplier invoice",
+    "invoice": {
+      "supplier_id": "SUP-001",
+      "invoice_number": "INV-1008",
+      "amount_cents": 120000,
+      "currency": "USD",
+      "account_ref": "DEMO-ACCT-A",
+      "pay_on": "2026-10-23"
+    },
+    "supplier": {
+      "id": "SUP-001",
+      "name": "Northstar Supplies (fictional)",
+      "verified": true,
+      "approved_account_ref": "DEMO-ACCT-A",
+      "typical_invoice_cents": 120000
+    },
+    "purchase_order": {
+      "id": "PO-1008",
+      "supplier_id": "SUP-001",
+      "amount_cents": 120000
+    },
+    "paid_invoices": [],
+    "company": {
+      "currency": "USD",
+      "as_of": "2026-10-22",
+      "horizon_end": "2026-11-05",
+      "balance_cents": 2000000,
+      "minimum_cash_cents": 500000,
+      "approval_limit_cents": 2500000,
+      "cash_events": [
+        {
+          "date": "2026-10-30",
+          "label": "Payroll and rent",
+          "amount_cents": -800000,
+          "confirmed": true
+        },
+        {
+          "date": "2026-11-02",
+          "label": "Expected customer receipt",
+          "amount_cents": 400000,
+          "confirmed": false
+        }
+      ]
+    },
+    "expected_status": "READY"
+  },
+  {
+    "id": "changed-recipient",
+    "title": "Supplier payment details changed",
+    "invoice": {
+      "supplier_id": "SUP-001",
+      "invoice_number": "INV-1008",
+      "amount_cents": 120000,
+      "currency": "USD",
+      "account_ref": "DEMO-ACCT-B",
+      "pay_on": "2026-10-23"
+    },
+    "supplier": {
+      "id": "SUP-001",
+      "name": "Northstar Supplies (fictional)",
+      "verified": true,
+      "approved_account_ref": "DEMO-ACCT-A",
+      "typical_invoice_cents": 120000
+    },
+    "purchase_order": {
+      "id": "PO-1008",
+      "supplier_id": "SUP-001",
+      "amount_cents": 120000
+    },
+    "paid_invoices": [],
+    "company": {
+      "currency": "USD",
+      "as_of": "2026-10-22",
+      "horizon_end": "2026-11-05",
+      "balance_cents": 2000000,
+      "minimum_cash_cents": 500000,
+      "approval_limit_cents": 2500000,
+      "cash_events": [
+        {
+          "date": "2026-10-30",
+          "label": "Payroll and rent",
+          "amount_cents": -800000,
+          "confirmed": true
+        },
+        {
+          "date": "2026-11-02",
+          "label": "Expected customer receipt",
+          "amount_cents": 400000,
+          "confirmed": false
+        }
+      ]
+    },
+    "expected_status": "HOLD"
+  },
+  {
+    "id": "duplicate",
+    "title": "Invoice already paid",
+    "invoice": {
+      "supplier_id": "SUP-001",
+      "invoice_number": "INV-1008",
+      "amount_cents": 120000,
+      "currency": "USD",
+      "account_ref": "DEMO-ACCT-A",
+      "pay_on": "2026-10-23"
+    },
+    "supplier": {
+      "id": "SUP-001",
+      "name": "Northstar Supplies (fictional)",
+      "verified": true,
+      "approved_account_ref": "DEMO-ACCT-A",
+      "typical_invoice_cents": 120000
+    },
+    "purchase_order": {
+      "id": "PO-1008",
+      "supplier_id": "SUP-001",
+      "amount_cents": 120000
+    },
+    "paid_invoices": [
+      {
+        "supplier_id": "SUP-001",
+        "invoice_number": "inv-1008"
+      }
+    ],
+    "company": {
+      "currency": "USD",
+      "as_of": "2026-10-22",
+      "horizon_end": "2026-11-05",
+      "balance_cents": 2000000,
+      "minimum_cash_cents": 500000,
+      "approval_limit_cents": 2500000,
+      "cash_events": [
+        {
+          "date": "2026-10-30",
+          "label": "Payroll and rent",
+          "amount_cents": -800000,
+          "confirmed": true
+        },
+        {
+          "date": "2026-11-02",
+          "label": "Expected customer receipt",
+          "amount_cents": 400000,
+          "confirmed": false
+        }
+      ]
+    },
+    "expected_status": "BLOCK"
+  },
+  {
+    "id": "cash-shortfall",
+    "title": "Legitimate invoice creates a cash shortfall",
+    "invoice": {
+      "supplier_id": "SUP-001",
+      "invoice_number": "INV-1008",
+      "amount_cents": 800000,
+      "currency": "USD",
+      "account_ref": "DEMO-ACCT-A",
+      "pay_on": "2026-10-23"
+    },
+    "supplier": {
+      "id": "SUP-001",
+      "name": "Northstar Supplies (fictional)",
+      "verified": true,
+      "approved_account_ref": "DEMO-ACCT-A",
+      "typical_invoice_cents": 800000
+    },
+    "purchase_order": {
+      "id": "PO-1008",
+      "supplier_id": "SUP-001",
+      "amount_cents": 800000
+    },
+    "paid_invoices": [],
+    "company": {
+      "currency": "USD",
+      "as_of": "2026-10-22",
+      "horizon_end": "2026-11-05",
+      "balance_cents": 2000000,
+      "minimum_cash_cents": 500000,
+      "approval_limit_cents": 2500000,
+      "cash_events": [
+        {
+          "date": "2026-10-30",
+          "label": "Payroll and rent",
+          "amount_cents": -800000,
+          "confirmed": true
+        },
+        {
+          "date": "2026-11-02",
+          "label": "Expected customer receipt",
+          "amount_cents": 400000,
+          "confirmed": false
+        }
+      ]
+    },
+    "expected_status": "HOLD"
+  },
+  {
+    "id": "missing-evidence",
+    "title": "Purchase order unavailable",
+    "invoice": {
+      "supplier_id": "SUP-001",
+      "invoice_number": "INV-1008",
+      "amount_cents": 120000,
+      "currency": "USD",
+      "account_ref": "DEMO-ACCT-A",
+      "pay_on": "2026-10-23"
+    },
+    "supplier": {
+      "id": "SUP-001",
+      "name": "Northstar Supplies (fictional)",
+      "verified": true,
+      "approved_account_ref": "DEMO-ACCT-A",
+      "typical_invoice_cents": 120000
+    },
+    "purchase_order": null,
+    "paid_invoices": [],
+    "company": {
+      "currency": "USD",
+      "as_of": "2026-10-22",
+      "horizon_end": "2026-11-05",
+      "balance_cents": 2000000,
+      "minimum_cash_cents": 500000,
+      "approval_limit_cents": 2500000,
+      "cash_events": [
+        {
+          "date": "2026-10-30",
+          "label": "Payroll and rent",
+          "amount_cents": -800000,
+          "confirmed": true
+        },
+        {
+          "date": "2026-11-02",
+          "label": "Expected customer receipt",
+          "amount_cents": 400000,
+          "confirmed": false
+        }
+      ]
+    },
+    "expected_status": "REVIEW"
+  },
+  {
+    "id": "approval-limit",
+    "title": "Manager approval threshold reached",
+    "invoice": {
+      "supplier_id": "SUP-001",
+      "invoice_number": "INV-1008",
+      "amount_cents": 120000,
+      "currency": "USD",
+      "account_ref": "DEMO-ACCT-A",
+      "pay_on": "2026-10-23"
+    },
+    "supplier": {
+      "id": "SUP-001",
+      "name": "Northstar Supplies (fictional)",
+      "verified": true,
+      "approved_account_ref": "DEMO-ACCT-A",
+      "typical_invoice_cents": 120000
+    },
+    "purchase_order": {
+      "id": "PO-1008",
+      "supplier_id": "SUP-001",
+      "amount_cents": 120000
+    },
+    "paid_invoices": [],
+    "company": {
+      "currency": "USD",
+      "as_of": "2026-10-22",
+      "horizon_end": "2026-11-05",
+      "balance_cents": 2000000,
+      "minimum_cash_cents": 500000,
+      "approval_limit_cents": 120000,
+      "cash_events": [
+        {
+          "date": "2026-10-30",
+          "label": "Payroll and rent",
+          "amount_cents": -800000,
+          "confirmed": true
+        },
+        {
+          "date": "2026-11-02",
+          "label": "Expected customer receipt",
+          "amount_cents": 400000,
+          "confirmed": false
+        }
+      ]
+    },
+    "expected_status": "REVIEW"
+  },
+  {
+    "id": "uncertain-receipt",
+    "title": "Payment depends on an uncertain customer receipt",
+    "invoice": {
+      "supplier_id": "SUP-001",
+      "invoice_number": "INV-1008",
+      "amount_cents": 120000,
+      "currency": "USD",
+      "account_ref": "DEMO-ACCT-A",
+      "pay_on": "2026-10-23"
+    },
+    "supplier": {
+      "id": "SUP-001",
+      "name": "Northstar Supplies (fictional)",
+      "verified": true,
+      "approved_account_ref": "DEMO-ACCT-A",
+      "typical_invoice_cents": 120000
+    },
+    "purchase_order": {
+      "id": "PO-1008",
+      "supplier_id": "SUP-001",
+      "amount_cents": 120000
+    },
+    "paid_invoices": [],
+    "company": {
+      "currency": "USD",
+      "as_of": "2026-10-22",
+      "horizon_end": "2026-11-05",
+      "balance_cents": 1400000,
+      "minimum_cash_cents": 500000,
+      "approval_limit_cents": 2500000,
+      "cash_events": [
+        {
+          "date": "2026-10-30",
+          "label": "Payroll and rent",
+          "amount_cents": -800000,
+          "confirmed": true
+        },
+        {
+          "date": "2026-10-29",
+          "label": "Expected customer receipt",
+          "amount_cents": 400000,
+          "confirmed": false
+        }
+      ]
+    },
+    "expected_status": "REVIEW"
+  }
+]
