@@ -1,25 +1,22 @@
-# Project status
+# Implementation status
 
-Midpoint package prepared October 22, 2026 for the October 23 checkpoint.
-
-## Implemented
+## Available in the research prototype
 
 - Deterministic invoice, supplier, policy, and cash checks.
 - Seven independent synthetic scenarios.
-- Structured evidence findings and decision precedence.
-- Offline HTML report and JSON results.
-- Unit checks, repeatable demo instructions, and automated CI configuration.
-- Sourced problem framing, competitor comparison, architecture, and midpoint narratives.
+- Evidence-linked findings and explicit decision precedence.
+- Offline HTML report and structured JSON results.
+- Automated tests and continuous integration.
 
-## Planned
+## Planned capabilities
 
-- PDF/image invoice extraction and document evidence retrieval.
-- IBM watsonx model integration and agent orchestration.
-- Trained fraud and cash models with baseline comparisons.
-- Authenticated approval workflow and persistent audit state.
-- Concurrent cash reservations and exact-payment approval binding.
-- PayPal Sandbox integration and retry reconciliation.
+- PDF and image invoice extraction with source references.
+- IBM watsonx integration and specialist agent orchestration.
+- Statistical cash forecasts and evaluated risk models.
+- Authenticated approvals and persistent audit records.
+- Shared cash reservations and approval bound to the executable payment.
+- Sandbox payments with reconciliation across retries.
 
-## Claims to avoid
+## Evaluation scope
 
-No live AI service, model training, real payment, customer deployment, measured customer savings, legal clearance, course completion, or IBM submission is established by this package. FINALITY is a project working name, not a trademark or availability claim.
+The current tests establish behavior on curated scenarios. They do not measure real-world fraud detection, customer savings, or production reliability. Cash results use scheduled arithmetic rather than a trained forecasting model. No external AI service or payment system is connected. Each review runs independently and does not reserve shared funds.

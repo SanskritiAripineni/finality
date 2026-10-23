@@ -18,11 +18,11 @@ flowchart LR
   H --> X[Future sandbox executor]
 ```
 
-The diagram describes the target system. The midpoint implementation provides deterministic checks with the same role labels, not autonomous agents.
+The diagram describes the target system. The current implementation provides deterministic checks with the same role labels, not autonomous agents.
 
 ## Component contracts
 
-| Component | Inputs | Output | Midpoint status |
+| Component | Inputs | Output | Implementation status |
 | --- | --- | --- | --- |
 | Intake | Structured invoice JSON | Validated money and date fields | Implemented for required scenario fields |
 | Invoice checks | Invoice, purchase order, paid ledger | Evidence matches and duplicate finding | Implemented exact rules |

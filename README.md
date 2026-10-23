@@ -4,93 +4,111 @@
 
 ### A clear decision before money moves.
 
-Evidence-based supplier payment review.
+Supplier payment review grounded in evidence and cash consequences.
 
-**Working midpoint prototype · Synthetic data · IBM agent integration planned**
+**Research prototype** · **Synthetic data** · **Python 3.9+**
 
-[Midpoint submission](docs/IBM-MIDPOINT.md) · [Architecture](docs/ARCHITECTURE.md) · [Research](docs/RESEARCH.md) · [Demo guide](docs/DEMO.md)
+[Project brief](docs/PROJECT-BRIEF.md) · [Architecture](docs/ARCHITECTURE.md) · [Research](docs/RESEARCH.md) · [Roadmap](docs/BUILD-PLAN.md)
 
 </div>
 
-![FINALITY payment review report](assets/demo-preview.png)
+![FINALITY payment review interface](assets/demo-preview.png)
 
-A familiar supplier. A plausible invoice. A different bank account.
+## The payment decision
 
-FINALITY brings supporting records, recipient checks, company rules, and cash consequences into one review. Each finding explains the evidence and the next step. The working prototype uses deterministic checks. The proposed agent layer will automate document interpretation and evidence gathering.
+Before a supplier invoice becomes a payment, someone has to establish that the bill is supported, the recipient is correct, and the company can meet its upcoming obligations.
 
-## See it in one minute
+FINALITY brings those checks into one review. Every finding identifies its supporting evidence and the next action. The current prototype implements deterministic checks and scheduled cash calculations. The proposed agent layer will interpret documents and gather relevant records.
 
-```bash
-python3 -m finality
-```
+## Why it matters
 
-Open **[the offline demo report](artifacts/demo-report.html)** locally after cloning or downloading the repository. GitHub displays the HTML source rather than running it. No credentials, dependencies, or bank access are required. Python 3.9 or later runs the simulation.
+**Payment fraud is widespread.** AFP's 2026 survey reports that 76% of respondents' organizations experienced attempted or actual payment fraud in 2025. This includes unsuccessful attempts and covers payment fraud broadly. [AFP survey](https://www.financialprofessionals.org/training-resources/resources/survey-research-economic-data/details/payments-fraud).
 
-| Scenario | Result | Evidence |
-| --- | --- | --- |
-| Ordinary supplier invoice | READY | Matching records and sufficient projected cash |
-| Changed recipient | HOLD | Invoice account differs from the approved supplier record |
-| Already-paid invoice | BLOCK | Supplier and invoice number match the paid ledger |
-| Cash shortfall | HOLD | Projected cash falls to $4,000 against a $5,000 reserve |
-| Missing purchase order | REVIEW | Supporting evidence is unavailable |
-| Approval threshold | REVIEW | Payment reaches the manager approval limit |
-| Uncertain receipt | REVIEW | Cash sufficiency depends on an unconfirmed incoming payment |
+**Payment timing matters too.** The Federal Reserve Banks' 2026 report finds that 50% of surveyed small employer firms faced uneven cash flow. [Federal Reserve report, printed page 3](https://www.fedsmallbusiness.org/-/media/project/clevelandfedtenant/fsbsite/reports/2026/2026-report-on-employer-firms/2026-report-on-employer-firms.pdf).
 
-READY means the demonstrated checks passed. This prototype does not authorize or execute transfers. Every scenario runs independently.
+These findings describe different populations. They establish the relevance of the problem, while FINALITY's effectiveness remains an evaluation question. [Research and competitive context](docs/RESEARCH.md).
 
-## Why this problem matters
-
-AFP's 2026 survey reports attempted or actual payment fraud at **76% of respondents' organizations** in 2025. Separately, the Federal Reserve Banks' 2026 small-business report shows **50% of surveyed employer firms faced uneven cash flow**. These describe distinct populations and support the relevance of payment review, not a claim about FINALITY's effectiveness. [Sources and limitations](docs/RESEARCH.md).
-
-## The framework
+## Review framework
 
 **Intake → Evidence → Assessment → Decision → Record**
 
-Invoice checks compare supporting records. Risk checks compare trusted recipient details and flag unusual amounts. Treasury checks calculate base and stress cash scenarios. Policy rules assemble a decision with explicit precedence. The target architecture separates AI recommendations from enforceable payment authority.
+| Review area | Question | Evidence |
+| --- | --- | --- |
+| Invoice | Does the bill match supporting records? | Purchase order and paid-invoice ledger |
+| Recipient | Do the payment details match a trusted supplier? | Approved supplier record |
+| Cash | Would paying now breach the cash reserve? | Dated obligations and receipt assumptions |
+| Policy | What action and approval are required? | Configured approval limits and findings |
 
 ```mermaid
 flowchart LR
-  A[Invoice and records] --> B[Invoice checks]
-  A --> C[Risk checks]
+  A[Invoice and supporting records] --> B[Invoice checks]
+  A --> C[Recipient and risk checks]
   A --> D[Cash assessment]
   B --> E[Policy decision]
   C --> E
   D --> E
   E --> F[Evidence report]
   E -. Planned .-> G[Human approval]
-  G -. Planned .-> H[Sandbox payment]
+  G -. Planned .-> H[Sandbox execution]
 ```
 
-[Component contracts and IBM integration plan](docs/ARCHITECTURE.md).
+[System architecture and component contracts](docs/ARCHITECTURE.md).
 
-## What exists today
+## Example outcomes
 
-A dependency-free Python review engine, seven synthetic cases, evidence-linked decisions, an offline report, and tests. Cash results use scheduled arithmetic and a stress case without unconfirmed receipts. No statistical forecast or fraud classifier is trained. No autonomous agent or IBM service is connected yet.
+| Scenario | Decision | Explanation |
+| --- | --- | --- |
+| Ordinary supplier invoice | **READY** | Supporting records match and cash remains above reserve |
+| Changed recipient | **HOLD** | Account differs from the approved supplier record |
+| Invoice already paid | **BLOCK** | Supplier and invoice number match the paid ledger |
+| Cash shortfall | **HOLD** | Minimum cash reaches $4,000 against a $5,000 reserve |
+| Missing purchase order | **REVIEW** | Supporting evidence is unavailable |
+| Approval threshold reached | **REVIEW** | Payment requires manager attention |
+| Uncertain customer receipt | **REVIEW** | Cash sufficiency depends on an unconfirmed receipt |
 
-The next milestone adds document extraction and specialist agents using IBM tools, subject to access. Agent-assisted review will be compared against this rules-only baseline. [Build and evaluation plan](docs/BUILD-PLAN.md).
+READY means the implemented checks passed. It does not authorize a transfer. The seven scenarios run independently against fictional company records.
 
-## Positioning
+## Run locally
 
-Ramp and BILL already offer invoice automation and controls. Float offers cash forecasts. FINALITY explores a lightweight review workflow for users who still assemble those checks manually. Its differentiation is a hypothesis to validate, not a claim of first invention. [Competitive comparison](docs/RESEARCH.md#existing-solutions).
+Clone the repository and run the following from its root with Python 3.9 or later:
 
-## Run the checks
+```bash
+python3 -m finality
+```
+
+Open `artifacts/demo-report.html` in a browser to inspect the review results. The command also writes structured JSON findings beside the report. No third-party Python packages or credentials are required. [View the committed report source](artifacts/demo-report.html).
+
+Run the test suite:
 
 ```bash
 python3 -m unittest discover -s tests -v
 ```
 
-The tests exercise scenario decisions, financial arithmetic, duplicate precedence, threshold boundaries, currency mismatches, cash-event timing, escaping, and input immutability. Curated synthetic cases are acceptance tests, not real-world fraud benchmarks.
+The tests cover cash arithmetic, decision precedence, threshold boundaries, currency handling, timing assumptions, input immutability, and safe HTML rendering.
 
-## Project materials
+## Development status
 
-- [Presentation PDF](output/pdf/FINALITY-Midpoint-Presentation.pdf)
-- [Three-page submission brief](output/pdf/FINALITY-Midpoint-Brief.pdf)
-- [Midpoint submission text](docs/IBM-MIDPOINT.md)
-- [Presenter notes](docs/PRESENTER-NOTES.md)
-- [Three-minute demo walkthrough](docs/DEMO.md)
-- [Research and documented incident](docs/RESEARCH.md)
-- [Architecture and component contracts](docs/ARCHITECTURE.md)
+| Available | Planned |
+| --- | --- |
+| Structured synthetic invoice inputs | PDF and image document extraction |
+| Supplier, order, duplicate, and policy checks | Specialist agents using IBM watsonx services |
+| Base and stress cash calculations | Statistical forecasts and risk-model evaluation |
+| Evidence report and automated tests | Authenticated approvals and sandbox payments |
+
+[Implementation status](docs/STATUS.md) · [Milestones and evaluation criteria](docs/BUILD-PLAN.md)
+
+## Positioning
+
+Ramp and BILL already offer invoice automation and payment controls. Float offers cash forecasting. FINALITY explores a configurable review workflow for users who still assemble these checks manually. The intended contribution is an understandable decision record that joins supporting evidence with payment consequences. The user need and competitive advantage remain hypotheses to validate.
+
+## Project resources
+
+- [Project brief: idea, value proposition, and AI justification](docs/PROJECT-BRIEF.md)
+- [Architecture and agent responsibilities](docs/ARCHITECTURE.md)
+- [Research, documented incident, and existing solutions](docs/RESEARCH.md)
 - [Implementation roadmap and evaluation](docs/BUILD-PLAN.md)
-- [Implemented versus planned](docs/STATUS.md)
+- [Project brief PDF](output/pdf/FINALITY-Project-Brief.pdf)
+- [Presentation PDF](output/pdf/FINALITY-Overview.pdf)
+- [Contribution guidelines](CONTRIBUTING.md)
 
-Personal educational project by Sanskriti Aripineni, prepared for the IBM SkillsBuild AI Experiential Learning Lab. IBM does not endorse this project. All business records are fictional.
+Created by **Sanskriti Aripineni** as a personal educational project in the IBM SkillsBuild AI Experiential Learning Lab. All business records are synthetic. IBM does not endorse this project.

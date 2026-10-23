@@ -1,8 +1,8 @@
 # Implementation and evaluation plan
 
-## Midpoint deliverables
+## Current foundation
 
-The initial package contains the research, three submission narratives, architecture, reproducible deterministic review prototype, seven synthetic scenarios, tests, demo report, presentation, and presenter notes. It establishes the decision workflow before adding language models.
+The current foundation includes a sourced problem statement, project brief, architecture, deterministic review engine, seven synthetic scenarios, an evidence report, and automated tests. It establishes the review workflow and a baseline for evaluating future agent capabilities.
 
 ## Next milestones
 
@@ -30,6 +30,6 @@ Report field extraction accuracy, discrepancy recall, false holds, human review 
 
 The seven scenarios are curated acceptance cases, not a representative benchmark. Unit checks cover arithmetic, decision precedence, threshold boundaries, date horizons, currency handling, report escaping, and input immutability. Broad schema validation, persistent state, authentication, concurrent reservations, and live integration are not implemented.
 
-## User research without business deployment
+## User validation
 
-A future usability session may use fictional cases and ask participants to review evidence. Participation and any external-work arrangements should be resolved independently before company-specific implementation. The present deliverable requires no business access or real records.
+Usability sessions can use fictional cases to measure whether participants understand the findings and can identify the required next action. Compare review time and decisions with the existing process. Operational validation with representative data is a separate future milestone.
