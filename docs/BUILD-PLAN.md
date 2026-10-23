@@ -18,6 +18,10 @@ The current foundation includes a sourced problem statement, project brief, arch
 
 Sequence is intentional. Confirm IBM access before model-dependent implementation. Complete document extraction and evidence grounding before treating generated explanations as useful.
 
+## Development with IBM Bob
+
+We plan to use IBM Bob to help organize the codebase, implement agent tools, generate tests for payment-review failure cases, debug issues, and maintain documentation. Team members will review generated changes and verify their behavior. Bob supports development; the proposed watsonx agent workflow will perform invoice review. Bob has not been used to build the current prototype.
+
 ## Evaluation framework
 
 1. Rules-only baseline: current engine.

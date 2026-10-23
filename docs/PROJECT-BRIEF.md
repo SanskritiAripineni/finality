@@ -4,27 +4,27 @@ Project brief by AI builders
 
 ## Preliminary Idea & Description
 
-FINALITY is a proposed AI assistant that helps businesses review supplier invoices before making a payment. It is designed for owners, bookkeepers, and finance teams who need to check a bill against supplier records, purchase orders, and upcoming expenses.
+FINALITY is a proposed AI agent that helps business owners, bookkeepers, and finance teams review supplier invoices before making a payment. It addresses a practical problem: deciding whether a bill is supported by the right records, whether the recipient details are correct, and whether paying now would leave enough cash for upcoming expenses.
 
-The idea starts with a practical question: should this invoice be paid now? FINALITY would bring the relevant information together, flag anything that needs attention, and explain the next step. An invoice might match its purchase order but contain different payment details. Another might be legitimate but leave too little cash for payroll. These situations need different responses, and the recommendation should make that clear.
+The agent would read an invoice, retrieve relevant supplier records and purchase orders, check for discrepancies, and assess the payment's cash consequences. It would then explain whether the invoice is ready for approval, needs further verification, or should be held. For example, a familiar supplier's invoice might contain changed bank details, while another legitimate invoice could create a cash shortage before payroll.
 
-We have built an initial rules-based prototype using fictional business records. Our next step is to add document understanding and specialist AI agents, then test the complete review process.
+We have built an initial rules-based prototype using fictional business records to test these situations. Our next step is to add document understanding and specialist agents for invoice review, supplier risk, cash assessment, and company policy. During development, people will retain payment approval, and any payment integration will use a sandbox.
 
 ## Value Proposition
 
-Payment mistakes can be costly, and checking every bill takes time. In AFP's 2026 survey, 76% of respondents' organizations reported attempted or actual payment fraud in 2025 [1]. Separately, the Federal Reserve Banks' 2026 report found that 50% of surveyed small employer firms faced uneven cash flow [2].
+For business owners, bookkeepers, and finance teams who need to verify supplier bills while keeping enough cash for upcoming expenses, our agent delivers a clear payment recommendation supported by relevant records and cash calculations.
 
-FINALITY aims to help businesses make better-informed payment decisions with less manual checking. A reviewer would see the invoice, the supporting evidence, and the effect on available cash in one place, with a clear explanation of any issue.
+The need is reflected in published research. AFP's 2026 survey found attempted or actual payment fraud at 76% of respondents' organizations in 2025. Separately, the Federal Reserve Banks' 2026 report found that 50% of surveyed small employer firms faced uneven cash flow.
 
-Existing tools already automate invoices and forecast cash. Our focus is the review between receiving a bill and authorizing payment, especially where people still piece together information from separate records. We will assess the approach by measuring review time, discrepancies found, and unnecessary alerts.
+FINALITY aims to reduce the time spent piecing together a payment decision. A reviewer would see what needs attention, why it matters, and what to do next. Our focus is businesses that still assemble these checks manually across separate records. We will evaluate the approach through review time, discrepancies identified, and unnecessary alerts.
 
 ## AI-Use Justification
 
-Invoice review involves reading documents that vary in format and finding relevant details across several records. AI can help with that interpretation and coordination, while software rules handle the calculations and approval limits.
+Fixed rules work well for calculating cash balances and enforcing approval limits. AI is useful for interpreting invoices in different formats and connecting their contents with supporting records.
 
-We plan to use specialist agents to read invoices, check supplier information, assess cash consequences, and apply company policy. Each would contribute findings to a shared review. If information is missing or a payment detail has changed, the system would ask for verification before proceeding.
+An agentic workflow would go beyond extracting text. It would select relevant checks, call tools to retrieve supplier and purchase-order information, assess cash consequences, and combine the findings into a recommendation. Missing information would prompt a request for verification. A manual process can perform these tasks, but requires someone to gather and compare the records each time.
 
-We plan to explore IBM watsonx for the agent workflow. Payment approvals would remain under human control during development, and any payment integration would use a sandbox. We will compare the agent-assisted process with our current prototype to see whether it improves accuracy and reduces review effort.
+We plan to use IBM Bob as our development assistant to help organize the code, implement the agents' tools, write tests for cases such as duplicate invoices and changed recipients, debug issues, and maintain documentation. We will review and test its output. IBM watsonx is our proposed platform for the agent workflow. Explicit software rules will continue to control calculations and payment permissions.
 
 ## Sources
 
