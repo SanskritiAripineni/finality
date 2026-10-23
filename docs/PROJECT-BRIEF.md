@@ -1,33 +1,33 @@
-# Project brief
+# FINALITY
 
-FINALITY supports evidence-based supplier payment review. This brief describes the proposed solution, its value, and the role of AI.
+Project brief by AI builders
 
-## Preliminary idea and description
+## Preliminary Idea & Description
 
-FINALITY is an agentic AI payment-review assistant designed to help businesses check supplier invoices before payment. It brings together invoice evidence, approved supplier details, company approval rules, and the cash consequences of paying now. The intended user is a business owner, bookkeeper, or finance manager who currently assembles this information across separate records.
+FINALITY is a proposed AI assistant that helps businesses review supplier invoices before making a payment. It is designed for owners, bookkeepers, and finance teams who need to check a bill against supplier records, purchase orders, and upcoming expenses.
 
-The proposed workflow reads an invoice, retrieves supporting evidence, identifies discrepancies, assesses scheduled cash obligations, and produces an understandable recommendation: ready for the next approval step, manager review required, hold for an unresolved exception, or block a duplicate. Future payment integration will operate in a sandbox. The project uses a fictional company and synthetic data.
+The idea starts with a practical question: should this invoice be paid now? FINALITY would bring the relevant information together, flag anything that needs attention, and explain the next step. An invoice might match its purchase order but contain different payment details. Another might be legitimate but leave too little cash for payroll. These situations need different responses, and the recommendation should make that clear.
 
-The current deterministic prototype demonstrates seven payment-review scenarios, including changed recipient details, duplicate invoices, missing purchase orders, cash shortages, approval thresholds, and dependence on uncertain customer receipts. Agent orchestration and trained models remain planned.
+We have built an initial rules-based prototype using fictional business records. Our next step is to add document understanding and specialist AI agents, then test the complete review process.
 
-## Value proposition
+## Value Proposition
 
-FINALITY aims to reduce the manual work required to assemble a payment decision and make overlooked exceptions easier to identify. It answers: Is the invoice supported? Do payment details match trusted records? What happens to cash if we pay now? Every finding includes its evidence and a next action.
+Payment mistakes can be costly, and checking every bill takes time. In AFP's 2026 survey, 76% of respondents' organizations reported attempted or actual payment fraud in 2025 [1]. Separately, the Federal Reserve Banks' 2026 report found that 50% of surveyed small employer firms faced uneven cash flow [2].
 
-The need is grounded in published research. AFP's 2026 survey reports attempted or actual payment fraud at 76% of respondents' organizations during 2025. Separately, the Federal Reserve Banks' 2026 small-business report shows that 50% of surveyed employer firms faced uneven cash flow and 54% faced challenges paying operating expenses. These findings establish relevant problems, not the effectiveness of FINALITY.
+FINALITY aims to help businesses make better-informed payment decisions with less manual checking. A reviewer would see the invoice, the supporting evidence, and the effect on available cash in one place, with a clear explanation of any issue.
 
-Existing products already provide invoice automation, fraud checks, and cash forecasting. Our differentiation hypothesis is that a lightweight, configurable review workflow can help users who still combine those checks manually. We will evaluate review time, discrepancy detection, unnecessary holds, and whether users find the evidence useful. No customer savings or fraud-prevention rate is claimed.
+Existing tools already automate invoices and forecast cash. Our focus is the review between receiving a bill and authorizing payment, especially where people still piece together information from separate records. We will assess the approach by measuring review time, discrepancies found, and unnecessary alerts.
 
-## AI-use justification
+## AI-Use Justification
 
-Invoices and supporting documents vary in format and often require context from several sources. AI can extract structured fields, retrieve relevant records, identify inconsistencies, and coordinate follow-up tasks. We propose specialist Invoice, Risk, Treasury, and Policy agents with explicit input and output contracts.
+Invoice review involves reading documents that vary in format and finding relevant details across several records. AI can help with that interpretation and coordination, while software rules handle the calculations and approval limits.
 
-Deterministic software will calculate cash balances and enforce approval rules. An agent can recommend an action but cannot grant itself payment authority. A future executor will verify the approved recipient, amount, currency, and current decision before sandbox execution. Missing evidence will trigger review rather than a fabricated confidence score.
+We plan to use specialist agents to read invoices, check supplier information, assess cash consequences, and apply company policy. Each would contribute findings to a shared review. If information is missing or a payment detail has changed, the system would ask for verification before proceeding.
 
-We will compare the agent-assisted workflow against the current rules-only prototype. If a simpler method performs equally well, that component will stay simple. IBM watsonx services are proposed integration targets, subject to account access and program requirements. No IBM service is connected in the current prototype.
+We plan to explore IBM watsonx for the agent workflow. Payment approvals would remain under human control during development, and any payment integration would use a sandbox. We will compare the agent-assisted process with our current prototype to see whether it improves accuracy and reduces review effort.
 
-## Evidence links
+## Sources
 
-- [AFP 2026 survey, covering 2025](https://www.financialprofessionals.org/training-resources/resources/survey-research-economic-data/details/payments-fraud)
-- [Federal Reserve Banks 2026 report, printed page 3](https://www.fedsmallbusiness.org/-/media/project/clevelandfedtenant/fsbsite/reports/2026/2026-report-on-employer-firms/2026-report-on-employer-firms.pdf)
-- [Research and competitor comparison](RESEARCH.md)
+[1] [AFP, 2026 Payments Fraud and Control Survey](https://www.financialprofessionals.org/training-resources/resources/survey-research-economic-data/details/payments-fraud)
+
+[2] [Federal Reserve Banks, 2026 Report on Employer Firms, p. 3](https://www.fedsmallbusiness.org/-/media/project/clevelandfedtenant/fsbsite/reports/2026/2026-report-on-employer-firms/2026-report-on-employer-firms.pdf)
