@@ -20,11 +20,11 @@
 
 The program guide also mentions a working-prototype link. The dashboard is local-only; its localhost URL will not work on another person's computer. Provide repository run instructions and, if the form requires a public prototype link, arrange hosting or ask the program support team what link they accept. Do not represent a localhost URL as a public deployment.
 
-## Bob evidence still requires capture
+## Bob evidence included
 
-In Bob IDE, open Tasks, select the relevant FINALITY task, and select its header to display the task-session consumption summary. Save a screenshot of that summary. Include screenshots for all relevant tasks in `bob_sessions/` before submitting. An account subscription screen is not a substitute for task evidence. Do not include authentication callback URLs, credentials, or unrelated private information in screenshots.
+The repository includes `bob_sessions/finality-assessment.jpg`, an unmodified screenshot of the actual completed Bob IDE assessment task. The expanded task details identify the workspace and task, and the lower-right usage indicator shows 0.347 Bobcoins. See `bob_sessions/README.md` for the full task ID and the session's scope.
 
-Bob's completed repository-assessment session is confirmed. Any additional review or test-generation task must finish and be inspected before claiming its contribution.
+The captured session assessed the earlier baseline before the dashboard was implemented. Bob's confirmed contribution is repository analysis and scope planning. No additional Bob implementation or test-generation work is claimed.
 
 ## Demo sequence
 
@@ -41,7 +41,7 @@ Bob's completed repository-assessment session is confirmed. Any additional revie
 - Both statements describe only completed, verified features.
 - The correct team member submits through My Teams → Submissions and verifies a submission entry/status.
 - Mandatory SkillsBuild learning activities are completed and marked complete.
-- The exact November 22 cutoff time has not been confirmed; the daily counter's midnight EST reset is not deadline evidence.
+- The logged-in portal Details page was observed on November 22 listing submissions closing November 29, 11:59 PM ET; coach messages stated November 22. The daily submission counter's midnight EST reset is a separate counter setting.
 
 ## Current limitations
 

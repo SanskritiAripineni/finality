@@ -1,7 +1,12 @@
 # IBM Bob task-session evidence
 
-IBM Bob was used in its IDE to assess the FINALITY repository and help prioritize the submission scope. This folder must contain the required screenshots of actual task-session consumption summaries before final submission.
+IBM Bob was used in its IDE to assess the FINALITY repository and help prioritize the submission scope.
 
-To capture: Bob IDE → Tasks → select a FINALITY task → select the task header → screenshot the displayed task-session consumption summary. Repeat for each relevant completed task.
+[finality-assessment.jpg](finality-assessment.jpg) is an unmodified screenshot captured from IBM Bob IDE on November 22, 2026. It shows the expanded task details, workspace, completed assessment response, and the recorded usage amount in the lower-right corner.
 
-No task-session summary screenshot has been captured yet. Do not treat this README as completion of the evidence requirement. Add only actual evidence; exclude credentials, authentication callback URLs, and unrelated private information.
+- Task ID: `ff4cfe14ee960c946f6e764d3f495a8f`
+- Workspace: `finality-review`
+- Recorded usage shown: **0.347 Bobcoins**
+- Task: inspect the documentation, engine, report generator, sample scenarios, and tests; assess implemented capabilities and priorities without editing files.
+
+This session reviewed the earlier rules-based baseline, before the interactive dashboard was added. Its response is preserved as actual historical evidence; it is not a description of every feature in the current version. Bob's contribution was repository analysis and scope planning. No Bob code-generation or runtime-agent contribution is claimed.
