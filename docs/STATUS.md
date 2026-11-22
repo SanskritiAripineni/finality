@@ -6,6 +6,8 @@
 - Seven independent synthetic scenarios.
 - Evidence-linked findings and explicit decision precedence.
 - Offline HTML report and structured JSON results.
+- Interactive localhost dashboard, scenario selection, editable invoice/recipient/balance fields, evidence panels, and base/stress cash timelines.
+- Input validation, stale-result indication, sample reset, and JSON decision export.
 - Automated tests and continuous integration.
 
 ## Planned capabilities

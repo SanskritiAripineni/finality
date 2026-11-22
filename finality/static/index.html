@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>FINALITY — Payment review</title><link rel="stylesheet" href="/style.css"><script defer src="/app.js"></script></head>
+<body>
+<aside class="sidebar">
+  <a class="wordmark" href="/">FINALITY<span class="brand-dot"></span></a>
+  <p class="sidebar-intro">A clear decision<br>before money moves.</p>
+  <div class="nav-label">REVIEW WORKSPACE</div>
+  <div class="workspace-label"><span class="workspace-icon">F</span><div>Northstar demo company<small>Fictional business · USD</small></div></div>
+  <nav aria-label="Sample scenarios"><div class="nav-label scenarios-label">SAMPLE SCENARIOS <span>07</span></div><div id="scenarios"></div></nav>
+  <div class="sidebar-note"><strong>Built for human judgment.</strong><p>Every recommendation has a reason. Every exception has a next step.</p><span>Research prototype · Synthetic data</span></div>
+</aside>
+<div class="shell">
+  <header class="topbar"><div>Workspace <span>/</span> Supplier payment review</div><span class="demo-badge">DEMO ENVIRONMENT</span></header>
+  <main>
+    <section class="page-heading"><div><p class="eyebrow">BEFORE YOU PAY</p><h1>Know what needs attention.</h1><p class="subtitle">Check the evidence, recipient, and cash consequences in one review.</p></div><button id="download" class="button secondary" disabled>Export decision</button></section>
+    <div class="prototype-note"><span class="note-icon">i</span><p><strong>Working rules-based prototype.</strong> These fictional cases run independently. IBM Bob supports development; this demo does not call an AI model or move money.</p></div>
+    <div id="error" class="error" role="alert" hidden></div>
+    <div class="review-layout">
+      <section class="panel input-panel" aria-labelledby="invoice-heading">
+        <div class="panel-heading"><div><p class="eyebrow">REVIEW INPUT</p><h2 id="invoice-heading">Supplier invoice</h2></div><span class="document-icon">INV</span></div>
+        <p id="scenario-title" class="scenario-title">Loading sample records…</p>
+        <form id="review-form">
+          <div class="invoice-identity"><span id="supplier-name"></span><small id="invoice-number"></small></div>
+          <label for="amount">Invoice amount <span>USD</span></label><input id="amount" name="amount" inputmode="decimal" autocomplete="off" required>
+          <label for="recipient">Recipient account reference</label><input id="recipient" name="recipient" maxlength="120" autocomplete="off" required><small class="field-help">Compared with the trusted supplier record below.</small>
+          <label for="balance">Starting company balance <span>USD</span></label><input id="balance" name="balance" inputmode="decimal" autocomplete="off" required>
+          <div class="payment-date"><span>Proposed payment date</span><strong id="pay-date"></strong></div>
+          <button type="submit" class="button primary" id="run">Run payment review</button><button type="button" id="reset" class="reset">Reset sample values</button>
+        </form>
+        <div class="source-records"><h3>Supporting records</h3><dl><dt>Trusted supplier account</dt><dd id="trusted-account"></dd><dt>Purchase order</dt><dd id="purchase-order"></dd><dt>Manager review limit</dt><dd id="approval-limit"></dd><dt>Paid-invoice ledger</dt><dd id="paid-ledger"></dd></dl><p>Editing an invoice never changes these source records.</p></div>
+      </section>
+      <div class="results-column" id="results" aria-live="polite" aria-busy="true">
+        <section class="decision-panel" id="decision-panel"><div class="decision-top"><p class="eyebrow">PAYMENT ASSESSMENT</p><span class="status" id="status">LOADING</span></div><h2 id="decision-title">Preparing your review</h2><p id="decision-description">Loading fictional business records.</p><div class="next-step"><span>NEXT ACTION</span><p id="next-action"></p></div><p class="decision-caption" id="review-caption"></p></section>
+        <section class="panel findings-panel"><div class="section-heading"><h2>Evidence & findings</h2><span id="finding-count"></span></div><div id="findings"></div></section>
+        <section class="panel cash-panel"><div class="section-heading"><div><p class="eyebrow">PAYMENT CONSEQUENCES</p><h2>Will enough cash remain?</h2></div><span class="calculation-label">Scheduled calculation</span></div><div class="metrics"><div><span>Minimum cash · base case</span><strong id="base-min">—</strong></div><div><span>Without uncertain receipts</span><strong id="stress-min">—</strong></div><div><span>Required reserve</span><strong id="reserve">—</strong></div></div><div class="cash-tabs" role="group" aria-label="Cash timeline mode"><button type="button" id="base-tab" aria-pressed="true">Base case</button><button type="button" id="stress-tab" aria-pressed="false">Without uncertain receipts</button></div><div id="cash-chart" class="cash-chart"></div><div class="chart-legend"><span>Projected cash</span><span>Required reserve</span></div><div class="timeline-wrap"><table><caption class="sr-only">Cash events after the proposed payment</caption><thead><tr><th scope="col">Date</th><th scope="col">Cash event</th><th scope="col">Change</th><th scope="col">Balance</th></tr></thead><tbody id="timeline"></tbody></table></div><p class="cash-note">Same-day outflows precede receipts. The stress case excludes unconfirmed incoming cash. This is scheduled arithmetic, not a statistical forecast.</p></section>
+      </div>
+    </div>
+    <footer>FINALITY · Evidence before execution.<span>Human approval and payment execution are future work.</span></footer>
+  </main>
+</div>
+</body></html>

@@ -30,6 +30,7 @@ The diagram describes the target system. The current implementation provides det
 | Treasury checks | Starting balance, dated events, proposed payment | Base and stress minimum cash | Implemented scheduled arithmetic |
 | Policy | Findings, reserve, approval limit | READY, REVIEW, HOLD, BLOCK | Implemented deterministic precedence |
 | Report | Decisions and evidence | HTML and JSON results | Implemented |
+| Interactive dashboard | Sample case and validated invoice/recipient/balance edits | Existing engine decision, evidence, cash timelines, JSON export | Implemented as localhost-only Python HTTP service |
 | Agent orchestration | Typed tools, model access, retrieved records | Structured specialist findings | Planned |
 | Approval service | Authorized reviewer, exact payment, decision revision | Approval bound to request | Planned |
 | Payment executor | Current valid approval, idempotency key | Sandbox receipt or reconciled status | Planned |

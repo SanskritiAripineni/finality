@@ -20,7 +20,7 @@ Sequence is intentional. Confirm IBM access before model-dependent implementatio
 
 ## Development with IBM Bob
 
-We plan to use IBM Bob to help organize the codebase, implement agent tools, generate tests for payment-review failure cases, debug issues, and maintain documentation. Team members will review generated changes and verify their behavior. Bob supports development; the proposed watsonx agent workflow will perform invoice review. Bob has not been used to build the current prototype.
+IBM Bob has now been used in its IDE to inspect the repository, trace implemented checks, distinguish working rules from planned AI capabilities, and assess priorities for the final submission. Its assessment informed implementation scope and was independently checked against the code and test suite. The original rules engine predates this Bob session. Further code review, test generation, or debugging contributions should be described only after those tasks actually complete. Preserve task-session evidence in `bob_sessions/`. Bob supports development; the application currently makes no model calls.
 
 ## Evaluation framework
 

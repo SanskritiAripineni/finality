@@ -6,13 +6,13 @@
 
 Supplier payment review grounded in evidence and cash consequences.
 
-**Research prototype** · **Synthetic data** · **Python 3.9+**
+**Interactive research prototype** · **Synthetic data** · **Python 3.9+**
 
 [Project brief](docs/PROJECT-BRIEF.md) · [Architecture](docs/ARCHITECTURE.md) · [Research](docs/RESEARCH.md) · [Roadmap](docs/BUILD-PLAN.md)
 
 </div>
 
-![FINALITY payment review interface](assets/demo-preview.png)
+![FINALITY interactive payment review interface](assets/interactive-preview.jpg)
 
 ## The payment decision
 
@@ -73,6 +73,16 @@ READY means the implemented checks passed. It does not authorize a transfer. The
 Clone the repository and run the following from its root with Python 3.9 or later:
 
 ```bash
+python3 -m finality --serve
+```
+
+Open **http://127.0.0.1:8000** in your browser. Select one of seven fictional cases, edit the invoice amount, recipient reference, or starting cash balance, and run the review. Inspect findings, supporting records, base and stress cash timelines, and the next action. Export reviewed inputs and the decision as JSON. Edited inputs mark prior results as stale until reassessed. Each case runs independently and never updates the trusted supplier record or purchase order.
+
+The server listens only on your own computer. Use `--port 8001` if port 8000 is occupied. Stop it with Ctrl+C. This is a local demonstration, not a publicly hosted or production service.
+
+For the original offline HTML report:
+
+```bash
 python3 -m finality
 ```
 
@@ -84,18 +94,21 @@ Run the test suite:
 python3 -m unittest discover -s tests -v
 ```
 
-The tests cover cash arithmetic, decision precedence, threshold boundaries, currency handling, timing assumptions, input immutability, and safe HTML rendering.
+The tests cover cash arithmetic, decision precedence, threshold boundaries, currency handling, timing assumptions, input immutability, and safe HTML rendering, plus the actual local HTTP API: edited inputs, invalid requests, isolated source records, static routes, and origin/host checks. Browser checks covered READY, HOLD, BLOCK, REVIEW, stale results, invalid amounts, reset, JSON export, and a narrow-screen layout.
 
 ## Development status
 
 | Available | Planned |
 | --- | --- |
 | Structured synthetic invoice inputs | PDF and image document extraction |
+| Interactive local dashboard and editable inputs | Public hosting and multiuser access |
 | Supplier, order, duplicate, and policy checks | Specialist agents using IBM watsonx services |
 | Base and stress cash calculations | Statistical forecasts and risk-model evaluation |
 | Evidence report and automated tests | Authenticated approvals and sandbox payments |
 
 [Implementation status](docs/STATUS.md) · [Milestones and evaluation criteria](docs/BUILD-PLAN.md)
+
+The running application has no connected AI model. IBM Bob was used in its IDE for repository assessment and implementation-scope planning. Further Bob contributions must be documented from actual sessions. Bob session evidence belongs in `bob_sessions/`. See the [submission checklist](docs/SUBMISSION.md).
 
 ## Positioning
 
